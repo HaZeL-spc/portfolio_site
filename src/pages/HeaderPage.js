@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const HeaderPage = () => {
 
-    const words = ['ready to write code for you', 'looking forward to work with you', 'ready to operate with your team']
+    const words = ['ready to write code for your company', 'looking forward to work with you', 'ready to operate with your team']
     const [ numberLetter, setNumberLetter ] = useState(0)
     const [ numberWord, setNumberWord ] = useState(0)
     const [ word, setWord ] = useState(words[0])
@@ -34,7 +34,7 @@ const HeaderPage = () => {
 
 
     return (
-      <div className="header-page header-bg">
+      <div id="header-page" className="header-page header-bg">
         <div className="header-words">
             <h2 className="i-am-header-text">I am</h2>
             <div className="fillings-text">
