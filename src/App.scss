@@ -236,6 +236,7 @@ $minWidth: 320px;
   background:#ECEFF1;
   box-shadow: 10px 10px rgba(0,0,0,0.2);
   border-radius:100px;
+  animation: cloudAnim 5s infinite alternate;
 }
 .cloud::after, .cloud::before{
    content:"";
@@ -257,12 +258,13 @@ $minWidth: 320px;
    left:70px;
 }
 
-@keyframes bgAnim {
-  0% {
-    box-shadow: 400px 50px 0 0 $cloudColor, 200px 100px 0 0 $cloudColor, 400px 200px 0 0 $cloudColor;
+@keyframes cloudAnim {
+  0% {margin-top: 90px;}
+  50% {
+    margin-top: 70px;
   }
   100% {
-    box-shadow: 450px 50px 0 0 $cloudColor, 150px 100px 0 0 $cloudColor, 350px 200px 0 0 $cloudColor;
+    margin-top: 90px;
   }
 }
 
