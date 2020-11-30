@@ -59,7 +59,7 @@ const About = () => {
         </div>
         <div className="col-12 col-md-4">
           <div className="sun"></div>
-          <div className="bg"></div>
+          <div className="cloud"></div>
         </div>
       </div>
       <div className="experience">

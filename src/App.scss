@@ -26,6 +26,11 @@ $minWidth: 320px;
 .header-bg {
   background: rgb(236,242,42);
   background: linear-gradient(90deg, rgba(236,242,42,1) 0%, rgba(223,227,62,0.7587006960556845) 100%);
+  // background: linear-gradient(90deg, rgba(236,242,42,1) 0%, #ebbf31 10%,
+  // rgba(236,242,42,1) 20%,#ebbf31 30%,rgba(236,242,42,1) 40%,
+  //   #ebbf31 50%,rgba(236,242,42,1) 60%,
+  //    #ebbf31 70%,rgba(236,242,42,1) 80%,
+  //     #ebbf31 90%,);
 }
 
 .font-sans {
@@ -213,15 +218,43 @@ $minWidth: 320px;
 }
 
 
-.bg {
-  width: 100px;
-  height: 50px;
-  position: absolute;
-  left: -100px;
-  border-radius: 30%;
-  top: 20px;
-  box-shadow: 400px 0px 0 0 $cloudColor, 200px 150px 0 0 $cloudColor, 400px 250px 0 0 $cloudColor;
-  animation: bgAnim 3s infinite alternate;
+// .bg {
+//   width: 100px;
+//   height: 50px;
+//   position: absolute;
+//   left: -100px;
+//   border-radius: 30%;
+//   top: 20px;
+//   box-shadow: 400px 0px 0 0 $cloudColor, 200px 150px 0 0 $cloudColor, 400px 250px 0 0 $cloudColor;
+//   animation: bgAnim 3s infinite alternate;
+// }
+
+.cloud{ 
+  margin-top:90px;
+  width:350px;
+  height:120px;
+  background:#ECEFF1;
+  box-shadow: 10px 10px rgba(0,0,0,0.2);
+  border-radius:100px;
+}
+.cloud::after, .cloud::before{
+   content:"";
+   position:relative;
+   display:inline-block;
+   background:inherit;
+   border-radius:inherit;
+}
+.cloud::after{
+   width:100px;
+   height:100px;
+   top:-100px;
+   left:30px;
+}
+.cloud::before{
+   width:180px;
+   height:180px;
+   top: -70px;
+   left:70px;
 }
 
 @keyframes bgAnim {
@@ -400,6 +433,9 @@ $minWidth: 320px;
   .bg {
     left: -200px;
   }
+  .cloud {
+    margin-left:-100px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -408,6 +444,9 @@ $minWidth: 320px;
     flex-direction: row;
   }
   .bg {
+    display: none;
+  }
+  .cloud {
     display: none;
   }
   .sun {
