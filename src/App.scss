@@ -1,4 +1,4 @@
-* {
+body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -28,11 +28,15 @@ $minWidth: 320px;
   background: linear-gradient(90deg, rgba(236,242,42,1) 0%, rgba(223,227,62,0.7587006960556845) 100%);
 }
 
+.font-sans {
+  font-family: 'Open Sans', sans-serif;
+}
+
 .navbar-md {
   // font-family: 'Ubuntu Mono', monospace;
   font-family: 'Open Sans', sans-serif;
 
-  z-index: 1;
+  z-index: 2;
   position: fixed;
   top: 0;
   left:0;
@@ -46,24 +50,22 @@ $minWidth: 320px;
   padding: 0px;
   list-style: none;
   overflow-y: hidden;
+  text-align: center;
 
+  box-shadow: none;
   background-color: white;
-  transition: 1s all;
-  transition-delay: 1s;
 
-  & li {
+  & a{
+    text-decoration: none;
+    border: none;
+    color: black;
+  
     position: relative;
     font-size: 30px;
     text-align: center;
     transition: 0.1s all;
     line-height: 35px;
-
-    & a {
-      text-decoration: none;
-      border: none;
-      color: black;
-    }
-
+  
     &:hover {
       cursor: pointer;
       font-size: 35px;
@@ -71,29 +73,36 @@ $minWidth: 320px;
   }
 }
 
-.navbar {
+.navbar-normal {
   position: fixed;
   top:0px;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
 
-    & a {
-      text-decoration: none;
-      border: none;
-      color: black;
+  & a {
+    text-decoration: none;
+    border: none;
+    color: black;
 
-      position: relative;
-      font-size: 30px;
-      transition: 0.1s all;
-      line-height: 35px;
+    position: relative;
+    font-size: 30px;
+    transition: 0.1s all;
+    line-height: 35px;
 
-      &:hover {
-        cursor: pointer;
-        font-size: 35px;
-        // background-color: black;
-      }
+    &:hover {
+      cursor: pointer;
+      font-size: 35px;
+      // background-color: black;
     }
   }
+}
+
+.navbar-md, .navbar-normal {
+  transition: height 1s 1s, box-shadow 0.2s;
+}
+
+.navbar-md.change-color, .navbar-normal.change-color {
+  box-shadow: 0 3px 20px rgba(black, 0.2);
 }
 
 .i-am-header-text {
@@ -110,6 +119,7 @@ $minWidth: 320px;
   top: 46vh;
   width: 100vw;
   text-align: center;
+  line-height: 80px;
   min-width: $minWidth;
 }
 
@@ -131,7 +141,7 @@ $minWidth: 320px;
   100% {opacity: 1;}
 }
 
-.about-header {
+.section-header {
   text-align: center;
   font-size: 70px;
   font-family: 'Open Sans', sans-serif;
@@ -141,9 +151,24 @@ $minWidth: 320px;
   width: 100vw;
   min-height: 500px;
   background-color: white;
+  min-width: $minWidth;
+  margin: 0px;
+  padding: 0px;
 
   & .about-text-div {
     width: 75%;
+    // position: relative;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  & .paint-bg {
+    position: absolute;
+    top: 150px;
+    left:10px;
+
+    height: auto;
+    width: 300px;
   }
 
   & .about-text {
@@ -154,8 +179,8 @@ $minWidth: 320px;
     margin-left: auto;
     margin-right: auto;
     font-family: 'Open Sans', sans-serif;
-    min-width: $minWidth;
-
+    // min-width: $minWidth;
+    z-index: 1;
 
     opacity: 0;
     transition: 2s all ease-out;
@@ -220,7 +245,7 @@ $minWidth: 320px;
 
 .my-projects-container {
   width: 100%;
-  min-height: 800px;
+  // min-height: 800px;
   background-color: rgba(33, 112, 158, 0.329);
 }
 
@@ -232,6 +257,135 @@ $minWidth: 320px;
   font-size: 70px
 }
 
+.project-card-div {
+  position: relative;
+  height: 400px;
+  margin: 0px;
+  padding: 0px;
+
+  &:hover .overlay.appear {
+    cursor: pointer;
+    height: 400px;
+    border: 5px solid white;
+  }
+
+  & .project-card-under {
+    min-height: 400px;
+
+    transition: all .75s ease-in;
+    transition-delay: 0.5s;
+  }
+
+  & .project-card {
+    background-image: url('./colors-icon-png.png');
+    background-position: center;
+    // margin-left: 30px;
+    min-height: 0px;
+    height: 100%;
+    min-width: $minWidth;
+    opacity: 1;
+
+    border-bottom: 5px solid black;
+  }
+
+  & .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #008CBA;
+    overflow: hidden;
+    width: 100%;
+    height: 0px;
+    opacity: 1;
+    transition: height .5s ease;
+
+    & .text-project {
+      color: white;
+      font-size: 20px;
+      position: absolute;
+      width: 90%;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+  }
+
+  & .from-left {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+
+  & .from-right {
+    transform: translateX(50%);
+    opacity: 0;
+  }
+
+  & .from-left, .from-right {
+    transition: all 0.5s ease-in
+  }
+
+  & .from-left.appear, .from-right.appear {
+    opacity: 1;
+    transform: translateX(0)
+  }
+}
+
+.name-project {
+  background-color: rgba(33, 112, 158, 0.8);
+  color: white;
+  padding-bottom: 10px;
+  font-size: 80px;
+}
+
+.contact-site {
+  width:100%;
+  background-color: rgb(51, 51, 51);
+  color: white;
+  min-height: 300px;
+}
+
+.contact-text {
+  font-size: 30px;
+  color: white;
+}
+
+.contact-copy-btn {
+  background-color: transparent;
+  opacity: 1;
+  padding: 3px 20px 3px 20px;
+  border: 0px;
+  font-size: 20px;
+  color: rgba(236,242,42,1);
+  border-bottom: 1px solid white;
+
+  position: relative;
+
+  &:focus {
+    outline: 0 !important;
+  } 
+
+  &.clicked {
+    background-color: rgba(236,242,42,0.3);
+    transition: background-color 0.5s ease-in;
+  }
+}
+
+.upper-line {
+  margin: 0px auto 0px auto;
+  height: 1px;
+  width: 0px;
+  background-color: white;
+
+  transition: width 0.5s ease-in;
+}
+
+.button-div:hover .upper-line {
+  width: 100%;
+}
 
 @media (max-width: 992px) {
   .header-words {
@@ -263,9 +417,28 @@ $minWidth: 320px;
     width: 100%;
   }
   .experience-header {
-    font-size: 50px
+    font-size: 40px
+  }
+  .i-am-header-text {
+    top:25vh;
   }
   
+  .fillings-text {
+    margin-top: 30px;
+    top: 35vh;
+  }
+}
+
+@media (max-width: 576px) {
+  .name-project {
+    font-size: 60px;
+  }
+}
+
+@media (min-width: 768px) {
+  .paint-bg {
+    display: none;
+  }
 }
 
 @media (min-width: 576px) {
@@ -373,7 +546,7 @@ $minWidth: 320px;
     border-bottom: 1px solid black !important;
   }
   .border-lg-left {
-    border-left: 1px solid black !important;
+    border-left: 1px solid white !important;
   }
   .border-lg-top-0 {
     border-top: 0 !important;

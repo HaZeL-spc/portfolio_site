@@ -17,7 +17,7 @@ const About = () => {
       aboutUnderline.style.width = "100%"
       console.log(1)
       setTimeout(() => {
-        aboutUnderline.style.minWidth = "300px"
+        // aboutUnderline.style.minWidth = "320px"
         window.removeEventListener('scroll',scrollUnderlineHandler)
       }, 1500)
     }
@@ -28,7 +28,7 @@ const About = () => {
     var screenHeight = window.innerHeight
 
     const sun = document.querySelector('.sun')
-    var greenColor = screenHeight/(scrollTop*2.5)*242
+    var greenColor = screenHeight/(scrollTop*2.3)*242
     var standardColor = `rgba(236,${greenColor},42,1)`
 
     sun.style.backgroundColor = standardColor
@@ -45,10 +45,11 @@ const About = () => {
 
   return (
     <div id="about-site">
-      <h2 className="about-header">About</h2>
+      <h2 id="about-header" className="section-header">About</h2>
       <div className="row about-site">
         <div className="col-12 col-md-8 d-flex" >
           <div className="d-flex flex-column mx-auto about-text-div">
+            <img className="paint-bg" src='/img/yellow-paint.png'/>
             <p className="about-text">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
@@ -89,7 +90,7 @@ const About = () => {
           </div>
         </div>
         <h2 className="text-center display-4 mt-5 experience-header">Basic Skills</h2>
-        <div className="row mt-4">
+        <div className="row my-4">
           <div className="col-4 d-flex flex-column text-center px-0 border-dark border-right">
             <h2 className="experience-text-size">CSS</h2>
           </div>

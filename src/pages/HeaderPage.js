@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 
 const HeaderPage = () => {
 
@@ -6,12 +6,13 @@ const HeaderPage = () => {
     const [ numberLetter, setNumberLetter ] = useState(0)
     const [ numberWord, setNumberWord ] = useState(0)
     const [ word, setWord ] = useState(words[0])
+    const [ hasStarted, setHasStarted ] = useState(false)
     const lineRef = useRef()
 
     useEffect(() => {
-
         var interval = setTimeout(() => {
             try {
+                setHasStarted(true)
                 if (numberLetter <= words[numberWord].length){
                     lineRef.current.className = 'line'
                     setWord(words[numberWord].slice(0,numberLetter))
@@ -38,7 +39,10 @@ const HeaderPage = () => {
         <div className="header-words">
             <h2 className="i-am-header-text">I am</h2>
             <div className="fillings-text">
-                <span className="underline-word">{word}</span>
+                {
+                    hasStarted &&
+                    <span className="underline-word">{word}</span>
+                }
                 <span ref={lineRef}>|</span>
             </div>
         </div>
