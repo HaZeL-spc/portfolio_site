@@ -37,7 +37,7 @@ const Contact = () => {
 
           </div>
           <div className="col-12 col-lg-6 display-flex flex-column border-lg-left border-white border-top border-lg-top-0">
-            <div className="w-100 d-flex justify-content-center">
+            <div className="w-100 d-flex justify-content-center pt-4">
               <div className="button-div" onClick={copyText}>
                 <div className="upper-line"></div>
                 <button 
